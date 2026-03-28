@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="display">
+            <div class="expression" id="expression"></div>
+            <div class="result" id="result">0</div>
+        </div>
+        <div class="mode-bar">
+            <button class="mode-btn active" id="degBtn" onclick="setAngleMode('deg')">DEG</button>
+            <button class="mode-btn" id="radBtn" onclick="setAngleMode('rad')">RAD</button>
+            <button class="mode-btn sci-toggle" id="sciToggle" onclick="toggleScientific()">
+                <span id="sciToggleLabel">SCI</span>
+            </button>
+        </div>
+        <div class="scientific-panel" id="scientificPanel">
+            <div class="sci-row">
+                <button class="btn sci" onclick="appendFunc('sin(')">sin</button>
+                <button class="btn sci" onclick="appendFunc('cos(')">cos</button>
+                <button class="btn sci" onclick="appendFunc('tan(')">tan</button>
+                <button class="btn sci" onclick="appendFunc('log(')">log</button>
+            </div>
+            <div class="sci-row">
+                <button class="btn sci" onclick="appendFunc('asin(')">sin<sup>-1</sup></button>
+                <button class="btn sci" onclick="appendFunc('acos(')">cos<sup>-1</sup></button>
+                <button class="btn sci" onclick="appendFunc('atan(')">tan<sup>-1</sup></button>
+                <button class="btn sci" onclick="appendFunc('ln(')">ln</button>
+            </div>
+            <div class="sci-row">
+                <button class="btn sci" onclick="appendOp('²')">x&sup2;</button>
+                <button class="btn sci" onclick="appendOp('³')">x&sup3;</button>
+                <button class="btn sci" onclick="appendFunc('pow(')">x<sup>y</sup></button>
+                <button class="btn sci" onclick="appendFunc('sqrt(')"><span class="sqrt-sym">&radic;</span></button>
+            </div>
+            <div class="sci-row">
+                <button class="btn sci" onclick="appendFunc('cbrt(')"><sup>3</sup>&radic;</button>
+                <button class="btn sci" onclick="appendOp('!')">n!</button>
+                <button class="btn sci" onclick="append('π')"><span class="pi-sym">&pi;</span></button>
+                <button class="btn sci" onclick="append('e')">e</button>
+            </div>
+        </div>
+        <div class="buttons-grid">
+            <button class="btn func" onclick="clearAll()">AC</button>
+            <button class="btn func" onclick="backspace()">&#9003;</button>
+            <button class="btn func" onclick="appendOp('%')">%</button>
+            <button class="btn op" onclick="appendOp('÷')">÷</button>
+
+            <button class="btn num" onclick="append('7')">7</button>
+            <button class="btn num" onclick="append('8')">8</button>
+            <button class="btn num" onclick="append('9')">9</button>
+            <button class="btn op" onclick="appendOp('×')">×</button>
+
+            <button class="btn num" onclick="append('4')">4</button>
+            <button class="btn num" onclick="append('5')">5</button>
+            <button class="btn num" onclick="append('6')">6</button>
+            <button class="btn op" onclick="appendOp('-')">-</button>
+
+            <button class="btn num" onclick="append('1')">1</button>
+            <button class="btn num" onclick="append('2')">2</button>
+            <button class="btn num" onclick="append('3')">3</button>
+            <button class="btn op" onclick="appendOp('+')">+</button>
+
+            <button class="btn paren" onclick="append('(')"> (</button>
+            <button class="btn num" onclick="append('0')">0</button>
+            <button class="btn paren" onclick="append(')')">)</button>
+            <button class="btn equals" onclick="calculate()">=</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

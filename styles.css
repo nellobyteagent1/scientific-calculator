@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #0f0f1a;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #e0e0e0;
+}
+
+.calculator {
+    width: 340px;
+    background: #1a1a2e;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Display */
+.display {
+    background: #16162a;
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    min-height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.expression {
+    font-size: 15px;
+    color: #7a7a9e;
+    min-height: 22px;
+    word-break: break-all;
+    text-align: right;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.result {
+    font-size: 36px;
+    font-weight: 300;
+    color: #ffffff;
+    margin-top: 4px;
+    word-break: break-all;
+    text-align: right;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+}
+
+.result.error {
+    color: #ff6b6b;
+    font-size: 20px;
+}
+
+/* Mode bar */
+.mode-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 7px;
+    border: none;
+    border-radius: 8px;
+    background: #252542;
+    color: #7a7a9e;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 1px;
+}
+
+.mode-btn:hover {
+    background: #2e2e50;
+}
+
+.mode-btn.active {
+    background: #3a3a6e;
+    color: #a78bfa;
+}
+
+.sci-toggle {
+    background: #252542;
+}
+
+.sci-toggle.active {
+    background: #3a3a6e;
+    color: #a78bfa;
+}
+
+/* Scientific panel */
+.scientific-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, margin 0.35s ease, opacity 0.25s ease;
+    opacity: 0;
+    margin-bottom: 0;
+}
+
+.scientific-panel.open {
+    max-height: 220px;
+    opacity: 1;
+    margin-bottom: 10px;
+}
+
+.sci-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+/* Buttons grid */
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.btn {
+    padding: 16px 0;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+    transform: scale(0.94);
+}
+
+/* Number buttons */
+.btn.num {
+    background: #252542;
+    color: #e0e0e0;
+}
+
+.btn.num:hover {
+    background: #2e2e55;
+}
+
+/* Operator buttons */
+.btn.op {
+    background: #3a2d6e;
+    color: #a78bfa;
+    font-size: 20px;
+}
+
+.btn.op:hover {
+    background: #4a3d7e;
+}
+
+/* Function buttons (AC, backspace, %) */
+.btn.func {
+    background: #2a2a4a;
+    color: #7a7a9e;
+}
+
+.btn.func:hover {
+    background: #353560;
+}
+
+/* Parentheses */
+.btn.paren {
+    background: #252542;
+    color: #7a7a9e;
+    font-size: 20px;
+}
+
+.btn.paren:hover {
+    background: #2e2e55;
+}
+
+/* Equals button */
+.btn.equals {
+    background: linear-gradient(135deg, #6c5ce7, #a78bfa);
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.btn.equals:hover {
+    background: linear-gradient(135deg, #7c6cf7, #b79cfa);
+}
+
+/* Scientific buttons */
+.btn.sci {
+    padding: 10px 0;
+    font-size: 13px;
+    background: #1e1e3a;
+    color: #8e8eb8;
+    border-radius: 8px;
+}
+
+.btn.sci:hover {
+    background: #2a2a50;
+    color: #a78bfa;
+}
+
+.btn.sci sup {
+    font-size: 9px;
+}
+
+.sqrt-sym, .pi-sym {
+    font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+    .calculator {
+        width: 100%;
+        border-radius: 0;
+        min-height: 100vh;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+    }
+    .buttons-grid {
+        flex: 1;
+        align-content: end;
+    }
+    .btn {
+        padding: 18px 0;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 600px) {
+    .calculator {
+        width: 95%;
+        max-width: 380px;
+    }
+}
